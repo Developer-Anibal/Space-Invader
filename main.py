@@ -1,10 +1,11 @@
 import pygame
+import random
 
 # Initialize the pygame
 pygame.init()
 
 # create the screen
-screen = pygame.display.set_mode((800,600))
+screen = pygame.display.set_mode((800, 600))
 
 # Title and Icon
 pygame.display.set_caption("Space Invader")
@@ -17,15 +18,27 @@ playerX = 370
 playerY = 480
 playerX_change = 0
 
+# Enemy
+enemyImg = pygame.image.load('enemy.png')
+enemyX = random.randint(0, 800)
+enemyY = random.randint(50, 150)
+enemyX_change = 0
+
+
 def player(x, y):
-    screen.blit(playerImg,(x, y))
+    screen.blit(playerImg, (x, y))
+
+
+def enemy(x, y):
+    screen.blit(enemyImg, (x, y))
+
 
 # Game Loop
 running = True
 while running:
 
     # RGB - Red, Green, Blue
-    screen.fill((192,192,192))
+    screen.fill((192, 192, 192))
     # playerY -= 0.05
     # print(playerX)
     for event in pygame.event.get():
@@ -57,4 +70,5 @@ while running:
         playerX = 736
 
     player(playerX, playerY)
+    enemy(enemyX, enemyY)
     pygame.display.update()
