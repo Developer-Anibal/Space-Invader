@@ -22,7 +22,8 @@ playerX_change = 0
 enemyImg = pygame.image.load('enemy.png')
 enemyX = random.randint(0, 800)
 enemyY = random.randint(50, 150)
-enemyX_change = 0
+enemyX_change = 0.3
+enemyY_change = 40
 
 
 def player(x, y):
@@ -50,10 +51,10 @@ while running:
             # print("A keystroke is pressed")
             if event.key == pygame.K_LEFT:
                 # print("Left arrow is pressed")
-                playerX_change = -0.3
+                playerX_change = -0.1
             if event.key == pygame.K_RIGHT:
                 # print("Right arrow is pressed")
-                playerX_change = 0.3
+                playerX_change = 0.1
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 # print("Keystroke has been released")
@@ -61,6 +62,7 @@ while running:
 
     # 5 = 5 + -0.1 -> 5 = 5 - 0.1
     # 5 = 5 + 0.1
+    # Checking for boundaries of spaceship so it doesn't go out of bounds
     playerX += playerX_change
 
     # Set limits bisided - width of spacecraft is 64 minus 800 = 736
@@ -69,6 +71,17 @@ while running:
     elif playerX >= 736:
         playerX = 736
 
-    player(playerX, playerY)
+    # Enemy movement
+    enemyX += enemyX_change
+
+    # Set limits bisided - width of spacecraft is 64 minus 800 = 736
+    if enemyX <= 0:
+        enemyX_change = 0.1
+        enemyY += enemyY_change
+    elif enemyX >= 736:
+        enemyX_change = -0.1
+        enemyY += enemyY_change
+
     enemy(enemyX, enemyY)
+    player(playerX, playerY)
     pygame.display.update()

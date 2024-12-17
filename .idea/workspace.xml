@@ -128,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734455242100</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Creating the enemy">
+      <option name="closed" value="true" />
+      <created>1734464936138</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734464936138</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,7 +144,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -145,6 +159,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding Boudering to our game" />
     <MESSAGE value="Until Kbd Input Controls &amp; Key Pressed Events" />
-    <option name="LAST_COMMIT_MESSAGE" value="Until Kbd Input Controls &amp; Key Pressed Events" />
+    <MESSAGE value="Creating the enemy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating the enemy" />
   </component>
 </project>
