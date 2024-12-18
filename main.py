@@ -28,6 +28,18 @@ enemyY = random.randint(50, 150)
 enemyX_change = 0.2
 enemyY_change = 40
 
+# Bullet
+# Ready state - you can't see the bullet on the screen
+# Fire - The bullet is currently moving
+# We are moving bulletX coordinate inside loop
+# bulletY is 480 due PlayerY is 480 at nose of player
+bulletImg = pygame.image.load('bullet.png')
+bulletX = 0
+bulletY = 480
+bulletX_change = 0
+bulletY_change = 0.2
+bullet_state = "ready"
+
 
 def player(x, y):
     screen.blit(playerImg, (x, y))
@@ -36,6 +48,10 @@ def player(x, y):
 def enemy(x, y):
     screen.blit(enemyImg, (x, y))
 
+def fire_bullet(x,y):
+	global bullet_state
+	bullet_state = "fire"
+	screen.blit(bulletImg, (x + 16, y + 10))
 
 # Game Loop
 running = True
@@ -60,6 +76,10 @@ while running:
             if event.key == pygame.K_RIGHT:
                 # print("Right arrow is pressed")
                 playerX_change = 0.2
+            if event.key == pygame.K_SPACE:
+                # print("Right arrow is pressed")
+                fire_bullet(playerX,bulletY)
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 # print("Keystroke has been released")
@@ -86,6 +106,11 @@ while running:
     elif enemyX >= 736:
         enemyX_change = -0.2
         enemyY += enemyY_change
+
+    # Bullet Movement
+    if bullet_state == "fire":
+        fire_bullet(playerX, bulletY)
+        bulletY -= bulletY_change
 
     enemy(enemyX, enemyY)
     player(playerX, playerY)
