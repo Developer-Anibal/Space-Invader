@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="979f0f4b-ea05-462f-97b7-ad434616432e" name="Changes" comment="Creating the enemy">
+    <list default="true" id="979f0f4b-ea05-462f-97b7-ad434616432e" name="Changes" comment="Movement Mechanics of the Enemy Space Invader">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -136,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734464936138</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Movement Mechanics of the Enemy Space Invader">
+      <option name="closed" value="true" />
+      <created>1734466390942</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1734466390942</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,6 +168,7 @@
     <MESSAGE value="Adding Boudering to our game" />
     <MESSAGE value="Until Kbd Input Controls &amp; Key Pressed Events" />
     <MESSAGE value="Creating the enemy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating the enemy" />
+    <MESSAGE value="Movement Mechanics of the Enemy Space Invader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Movement Mechanics of the Enemy Space Invader" />
   </component>
 </project>
