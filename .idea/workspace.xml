@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="979f0f4b-ea05-462f-97b7-ad434616432e" name="Changes" comment="Creating Bullets for Shooting">
+    <list default="true" id="979f0f4b-ea05-462f-97b7-ad434616432e" name="Changes" comment="Shooting Multiple Bullets at Space Invaders">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -168,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734540122840</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Shooting Multiple Bullets at Space Invaders">
+      <option name="closed" value="true" />
+      <created>1734541421286</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1734541421286</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,6 +203,7 @@
     <MESSAGE value="Movement Mechanics of the Enemy Space Invader" />
     <MESSAGE value="Adding a Background Image" />
     <MESSAGE value="Creating Bullets for Shooting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating Bullets for Shooting" />
+    <MESSAGE value="Shooting Multiple Bullets at Space Invaders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shooting Multiple Bullets at Space Invaders" />
   </component>
 </project>

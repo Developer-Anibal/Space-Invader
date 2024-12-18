@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 # Initialize the pygame
 pygame.init()
@@ -23,7 +24,7 @@ playerX_change = 0
 
 # Enemy
 enemyImg = pygame.image.load('enemy.png')
-enemyX = random.randint(0, 800)
+enemyX = random.randint(0, 730)
 enemyY = random.randint(50, 150)
 enemyX_change = 0.2
 enemyY_change = 40
@@ -40,6 +41,7 @@ bulletX_change = 0
 bulletY_change = 0.3
 bullet_state = "ready"
 
+score = 0
 
 def player(x, y):
     screen.blit(playerImg, (x, y))
@@ -48,10 +50,20 @@ def player(x, y):
 def enemy(x, y):
     screen.blit(enemyImg, (x, y))
 
-def fire_bullet(x,y):
-	global bullet_state
-	bullet_state = "fire"
-	screen.blit(bulletImg, (x + 16, y + 10))
+
+def fire_bullet(x, y):
+    global bullet_state
+    bullet_state = "fire"
+    screen.blit(bulletImg, (x + 16, y + 10))
+
+
+def isCollision(enemyX, enemyY, bulletX, bulletY):
+    distance = math.sqrt((math.pow(enemyX - bulletX, 2)) + (math.pow(enemyY - bulletY, 2)))
+    if distance < 27:
+        return True
+    else:
+        return False
+
 
 # Game Loop
 running = True
@@ -60,7 +72,7 @@ while running:
     # RGB - Red, Green, Blue
     screen.fill((192, 192, 192))
     # Backgroud
-    screen.blit(background,(0,0))
+    screen.blit(background, (0, 0))
     # playerY -= 0.05
     # print(playerX)
     for event in pygame.event.get():
@@ -68,18 +80,18 @@ while running:
             running = False
 
         # if keystroke is pressed check whether its right or left
-        if event.type == pygame.KEYDOWN:                                  # print("A keystroke is pressed")
-            if event.key == pygame.K_LEFT:                                # print("Left arrow is pressed")
+        if event.type == pygame.KEYDOWN:  # print("A keystroke is pressed")
+            if event.key == pygame.K_LEFT:  # print("Left arrow is pressed")
                 playerX_change = -0.2
-            if event.key == pygame.K_RIGHT:                               # print("Right arrow is pressed")
+            if event.key == pygame.K_RIGHT:  # print("Right arrow is pressed")
                 playerX_change = 0.2
-            if event.key == pygame.K_SPACE:                               # print("Space arrow is pressed")
+            if event.key == pygame.K_SPACE:  # print("Space arrow is pressed")
                 if bullet_state == "ready":
-                    bulletX = playerX                                     # Get the current x coordinate of the spaceship
-                    fire_bullet(bulletX,bulletY)
+                    bulletX = playerX  # Get the current x coordinate of the spaceship
+                    fire_bullet(bulletX, bulletY)
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT: # print("Keystroke has been released")
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:  # print("Keystroke has been released")
                 playerX_change = 0
 
     # 5 = 5 + -0.1 -> 5 = 5 - 0.1
@@ -105,13 +117,23 @@ while running:
         enemyY += enemyY_change
 
     # Bullet Movement
-    if bulletY <= 0: # Above 0 is going to negative values
+    if bulletY <= 0:  # Above 0 is going to negative values
         bulletY = 480
         bullet_state = "ready"
 
     if bullet_state == "fire":
         fire_bullet(bulletX, bulletY)
         bulletY -= bulletY_change
+
+    # Collision
+    collision = isCollision(enemyX , enemyY, bulletX, bulletY)
+    if collision:
+        bulletY = 480
+        bullet_state = "ready"
+        score += 1
+        print(score)
+        enemyX = random.randint(0, 730)             # Restart enemy position
+        enemyY = random.randint(50, 150)
 
     enemy(enemyX, enemyY)
     player(playerX, playerY)
