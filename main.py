@@ -37,7 +37,7 @@ bulletImg = pygame.image.load('bullet.png')
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
-bulletY_change = 0.2
+bulletY_change = 0.3
 bullet_state = "ready"
 
 
@@ -68,21 +68,18 @@ while running:
             running = False
 
         # if keystroke is pressed check whether its right or left
-        if event.type == pygame.KEYDOWN:
-            # print("A keystroke is pressed")
-            if event.key == pygame.K_LEFT:
-                # print("Left arrow is pressed")
+        if event.type == pygame.KEYDOWN:                                  # print("A keystroke is pressed")
+            if event.key == pygame.K_LEFT:                                # print("Left arrow is pressed")
                 playerX_change = -0.2
-            if event.key == pygame.K_RIGHT:
-                # print("Right arrow is pressed")
+            if event.key == pygame.K_RIGHT:                               # print("Right arrow is pressed")
                 playerX_change = 0.2
-            if event.key == pygame.K_SPACE:
-                # print("Right arrow is pressed")
-                fire_bullet(playerX,bulletY)
+            if event.key == pygame.K_SPACE:                               # print("Space arrow is pressed")
+                if bullet_state == "ready":
+                    bulletX = playerX                                     # Get the current x coordinate of the spaceship
+                    fire_bullet(bulletX,bulletY)
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                # print("Keystroke has been released")
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT: # print("Keystroke has been released")
                 playerX_change = 0
 
     # 5 = 5 + -0.1 -> 5 = 5 - 0.1
@@ -108,8 +105,12 @@ while running:
         enemyY += enemyY_change
 
     # Bullet Movement
+    if bulletY <= 0: # Above 0 is going to negative values
+        bulletY = 480
+        bullet_state = "ready"
+
     if bullet_state == "fire":
-        fire_bullet(playerX, bulletY)
+        fire_bullet(bulletX, bulletY)
         bulletY -= bulletY_change
 
     enemy(enemyX, enemyY)
