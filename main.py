@@ -7,6 +7,9 @@ pygame.init()
 # create the screen
 screen = pygame.display.set_mode((800, 600))
 
+# Background
+background = pygame.image.load('background.png')
+
 # Title and Icon
 pygame.display.set_caption("Space Invader")
 icon = pygame.image.load('ufo.png')
@@ -22,7 +25,7 @@ playerX_change = 0
 enemyImg = pygame.image.load('enemy.png')
 enemyX = random.randint(0, 800)
 enemyY = random.randint(50, 150)
-enemyX_change = 0.3
+enemyX_change = 0.2
 enemyY_change = 40
 
 
@@ -40,6 +43,8 @@ while running:
 
     # RGB - Red, Green, Blue
     screen.fill((192, 192, 192))
+    # Backgroud
+    screen.blit(background,(0,0))
     # playerY -= 0.05
     # print(playerX)
     for event in pygame.event.get():
@@ -51,10 +56,10 @@ while running:
             # print("A keystroke is pressed")
             if event.key == pygame.K_LEFT:
                 # print("Left arrow is pressed")
-                playerX_change = -0.1
+                playerX_change = -0.2
             if event.key == pygame.K_RIGHT:
                 # print("Right arrow is pressed")
-                playerX_change = 0.1
+                playerX_change = 0.2
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 # print("Keystroke has been released")
@@ -76,10 +81,10 @@ while running:
 
     # Set limits bisided - width of spacecraft is 64 minus 800 = 736
     if enemyX <= 0:
-        enemyX_change = 0.1
+        enemyX_change = 0.2
         enemyY += enemyY_change
     elif enemyX >= 736:
-        enemyX_change = -0.1
+        enemyX_change = -0.2
         enemyY += enemyY_change
 
     enemy(enemyX, enemyY)
